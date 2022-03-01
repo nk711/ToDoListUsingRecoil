@@ -1,18 +1,15 @@
 import { atom, selector } from "recoil";
 
-
-export const todoListState = atom<CardItem[]>({
-    key: 'todoListState',
-    default: [],
-});
-
-
 export interface CardItem {
     key: number,
     todo: string,
     isComplete: boolean,
 }
 
+export const todoListState = atom<CardItem[]>({
+    key: 'todoListState',
+    default: [],
+});
 
 export const todoListFilterState = atom({
     key: 'todoListFilterState',
@@ -25,10 +22,11 @@ export const filteredToDoListState = selector({
         const filter = get(todoListFilterState);
         const list = get(todoListState);
 
+        console.log('filter', filter)
         switch (filter) {
-            case 'Show Completed':
+            case 'Completed':
                 return list.filter((item) => item.isComplete);
-            case 'ShowUncompleted':
+            case 'Uncompleted':
                 return list.filter((item) => !item.isComplete);
             default:
                 return list;
@@ -54,11 +52,3 @@ export const todoListStatsState = selector({
        };
     },
 });
-
-// export const val = selector({
-//     // key: 'val',
-//     // get: ({get}) => ({
-//     //     total: get(todoListState).length,
-//     //     completed.get(todoListState).filter((todo))
-//     // }),
-// })
