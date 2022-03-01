@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import { Button, KeyboardAvoidingView, Platform, SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, TextInput, View } from "react-native";
 import { atom, useRecoilValue, useSetRecoilState } from "recoil";
 import { AddCard } from "../components/AddCard";
 import { Card } from "../components/Card";
@@ -22,21 +22,30 @@ export const Home = () => {
         '#d4a096',
         '#bfa440',
         '#c7cf6c',
+        '#aacaaa',
         '#b24b63',
         '#4d77e7',
         '#b55799',
+        '#aacaaa',
         '#4ab6c2',
+        '#aacaaa',
+        '#cbb086',
+        '#99d372',
+        '#aacaaa',
     ]
     
     useEffect( () => {
         setBg(arrColors[randomInt(0,arrColors.length)])
     }, [todoList])
 
-    return (
+    return (<>
+            <SafeAreaView>
+                <StatusBar translucent backgroundColor= {bg}/>
+            </SafeAreaView>
             <KeyboardAvoidingView
                 behaviour = {Platform.OS === 'ios' ? 'padding' : 'height'}
             >
-                <ScrollView style= {styles.background}>
+                <ScrollView style= {[styles.background, {backgroundColor: bg}]}>
                     <Text style = {styles.title}> To Do List </Text>
                     <View style = {styles.cardList}>
                         <CardFilters style = {styles.filter}/>
@@ -50,15 +59,14 @@ export const Home = () => {
                     <CardStats/>
                 </ScrollView>
             </KeyboardAvoidingView>
+            </>
 )
 }
 
 const styles = StyleSheet.create({
     background: {
-        backgroundColor: '#aacaaa',
         height: '100%',
-        paddingHorizontal: 20,
-        paddingBottom: 20,
+        padding: 20,
     },
     row: {
         flexDirection: 'row'
