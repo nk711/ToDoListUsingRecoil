@@ -11,12 +11,12 @@ export const todoListState = atom<CardItem[]>({
     default: [],
 });
 
-export const todoListFilterState = atom({
+export const todoListFilterState = atom<string>({
     key: 'todoListFilterState',
     default: 'Show All'
 })
 
-export const filteredToDoListState = selector({
+export const filteredToDoListState = selector<CardItem[]>({
     key: 'filteredToDoListState',
     get: ({get}) => {
         const filter = get(todoListFilterState);
