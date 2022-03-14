@@ -20,7 +20,7 @@ export const CardFilters = () => {
             onValueChange= {(value) => updateFilter(value)}>
             <Picker.Item style={styles.options} label='Show All' value='All'/>
             <Picker.Item style={styles.options} label='Show Completed' value='Completed'/>
-            <Picker.Item style={styles.options} label='Show Uncompleted' value='Uncompleted'/>
+            <Picker.Item style={styles.options} label='Show Incomplete' value='Incomplete'/>
         </Picker>
         </>
     )

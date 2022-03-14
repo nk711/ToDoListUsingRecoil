@@ -26,7 +26,7 @@ export const filteredToDoListState = selector<CardItem[]>({
         switch (filter) {
             case 'Completed':
                 return list.filter((item) => item.isComplete);
-            case 'Uncompleted':
+            case 'Incomplete':
                 return list.filter((item) => !item.isComplete);
             default:
                 return list;
@@ -41,13 +41,13 @@ export const todoListStatsState = selector({
        const todoList = get(todoListState);
        const total = todoList.length;
        const totalCompleted = todoList.filter((item) => item.isComplete).length;
-       const totalUncompleted = todoList.filter((item) => item.isComplete!).length;
+       const totalIncomplete = todoList.filter((item) => !item.isComplete).length;
        const percentCompleted = total === 0 ? 0 : totalCompleted / total * 100;
 
        return {
            total,
            totalCompleted,
-           totalUncompleted,
+           totalIncomplete,
            percentCompleted
        };
     },

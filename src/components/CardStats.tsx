@@ -9,7 +9,7 @@ export const CardStats = () => {
     const {
         total,
         totalCompleted,
-        totalUncompleted,
+        totalIncomplete,
         percentCompleted
     } = useRecoilValue(todoListStatsState)
 
@@ -19,7 +19,7 @@ export const CardStats = () => {
         <View style={styles.stats}>
             <Text> * Total items: {total}</Text>
             <Text> * Items completed: {totalCompleted}</Text>
-            <Text> * Items not completed: {totalUncompleted}</Text>
+            <Text> * Items not completed: {totalIncomplete}</Text>
             <Text> * Percent completed: {formattedPercentCompleted}</Text>
         </View>
     )
