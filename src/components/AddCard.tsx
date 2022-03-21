@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Button, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { atom, useSetRecoilState } from "recoil";
-import { todoListState } from "../recoil/store";
+import { CardItem, todoListState } from "../recoil/store";
 
 export const AddCard = () => {
     const [input, setInput] = useState('');
     const setTodoList = useSetRecoilState(todoListState);
 
     const addItem = () => {
-        setTodoList((list) => [
+        setTodoList((list : CardItem[]) => [
             ...list,
             {
                 key: Math.random(),

@@ -7,7 +7,7 @@ import { CardFilters } from "../components/CardFilters";
 import { CardStats } from "../components/CardStats";
 import { filteredToDoListState, todoListState } from "../recoil/store";
 
-const randomInt = (min:number, max:number): number => { // min and max included 
+const randomInt = (min:number, max:number) => { // min and max included 
     return Math.floor(Math.random() * (max - min + 1) + min)
 }
 

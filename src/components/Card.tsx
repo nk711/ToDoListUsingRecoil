@@ -13,7 +13,8 @@ const removeItemAtIndex = (arr: CardItem[], index: number) => {
     return [...arr.slice(0, index), ...arr.slice(index+1)]
 }
 
-export const Card = ({item} : any) => {
+export const Card = ({item}: {item: CardItem}) => {
+    console.log(item)
     const [cardList, setCardList] = useRecoilState(todoListState);
     const index= cardList.findIndex((card: CardItem)=> card === item)
 

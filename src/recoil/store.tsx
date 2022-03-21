@@ -1,4 +1,4 @@
-import { atom, selector } from "recoil";
+import { atom, RecoilValue, selector } from "recoil";
 
 export interface CardItem {
     key: number,
@@ -21,8 +21,6 @@ export const filteredToDoListState = selector<CardItem[]>({
     get: ({get}) => {
         const filter = get(todoListFilterState);
         const list = get(todoListState);
-
-        console.log('filter', filter)
         switch (filter) {
             case 'Completed':
                 return list.filter((item) => item.isComplete);
@@ -43,7 +41,6 @@ export const todoListStatsState = selector({
        const totalCompleted = todoList.filter((item) => item.isComplete).length;
        const totalIncomplete = todoList.filter((item) => !item.isComplete).length;
        const percentCompleted = total === 0 ? 0 : totalCompleted / total * 100;
-
        return {
            total,
            totalCompleted,
